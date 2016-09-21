@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921102732) do
+ActiveRecord::Schema.define(version: 20160921103007) do
 
   create_table "matches", force: :cascade do |t|
     t.string   "winner_faction"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20160921102732) do
     t.datetime "date"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "loser_id"
+    t.integer  "winner_id"
+    t.index ["loser_id"], name: "index_matches_on_loser_id"
+    t.index ["winner_id"], name: "index_matches_on_winner_id"
   end
 
   create_table "players", force: :cascade do |t|
